@@ -39,6 +39,10 @@ def main() -> int:
     tables = load_model()
     if not tables:
         problems.append("语义模型为空")
+    for table, spec in tables.items():
+        conflict = spec["columns"] & spec["measures"]
+        if conflict:
+            problems.append(f"{table} 中列与度量值同名：{'、'.join(sorted(conflict))}")
 
     pages_file = RP / "pages" / "pages.json"
     if not pages_file.exists():

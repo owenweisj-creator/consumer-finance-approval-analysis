@@ -253,12 +253,12 @@ def combo_chart(name: str, x: float, y: float, w: float, h: float) -> dict:
         query_state={
             "Category": {"projections": [column_field("月度经营", "月份")]},
             "Y": {"projections": [measure_field("月度经营", "进件量合计", "进件量")]},
-            "Y2": {"projections": [measure_field("月度经营", "审批通过率")]},
+            "Y2": {"projections": [measure_field("月度经营", "整体审批通过率")]},
         },
         objects={
             "dataPoint": [
                 {"properties": {"fill": color("#9DB9C9")}, "selector": {"metadata": "月度经营.进件量合计"}},
-                {"properties": {"fill": color(WARN)}, "selector": {"metadata": "月度经营.审批通过率"}},
+                {"properties": {"fill": color(WARN)}, "selector": {"metadata": "月度经营.整体审批通过率"}},
             ],
             "lineStyles": [{"properties": {"strokeWidth": num(3), "showMarker": boolean(True)}}],
             "categoryAxis": [{"properties": {"fontSize": num(10)}}],

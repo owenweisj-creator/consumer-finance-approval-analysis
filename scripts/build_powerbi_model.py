@@ -20,10 +20,10 @@ TABLES = {
             ("进件量", "int64", "进件量", "sum"),
             ("审批通过量", "int64", "审批通过量", "sum"),
             ("实际用信量", "int64", "实际用信量", "sum"),
-            ("审批通过率", "double", "审批通过率", "none"),
-            ("用信率", "double", "用信率", "none"),
+            ("月度通过率", "double", "审批通过率", "none"),
+            ("月度用信率", "double", "用信率", "none"),
             ("审批金额", "double", "审批金额", "sum"),
-            ("件均", "double", "件均", "none"),
+            ("月度件均", "double", "件均", "none"),
         ],
         "measures": [
             ("进件量合计", "SUM('月度经营'[进件量])", "#,0", "核心指标"),
@@ -42,14 +42,14 @@ TABLES = {
             (
                 "最新月审批通过率",
                 "VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) "
-                "RETURN CALCULATE([审批通过率], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)",
+                "RETURN CALCULATE([整体审批通过率], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)",
                 "0.00%",
                 "最新月",
             ),
             (
                 "最新月用信率",
                 "VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) "
-                "RETURN CALCULATE([用信率], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)",
+                "RETURN CALCULATE([整体用信率], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)",
                 "0.00%",
                 "最新月",
             ),
@@ -63,7 +63,7 @@ TABLES = {
             (
                 "最新月件均",
                 "VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) "
-                "RETURN CALCULATE([件均], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)",
+                "RETURN CALCULATE([整体件均], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)",
                 "#,0.00",
                 "最新月",
             ),
@@ -151,8 +151,8 @@ def table_tmdl(name: str, spec: dict) -> str:
         lines.append("")
     csv_path = (PBI / "data" / spec["csv"]).as_posix()
     changes = ", ".join(
-        f'{{"{col}", {"Int64.Type" if dtype == "int64" else "type number" if dtype == "double" else "type text"}}}'
-        for col, dtype, _, _ in spec["columns"]
+        f'{{"{source}", {"Int64.Type" if dtype == "int64" else "type number" if dtype == "double" else "type text"}}}'
+        for _, dtype, source, _ in spec["columns"]
     )
     lines.extend(
         [

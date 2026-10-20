@@ -60,11 +60,11 @@
                       "Entity": "月度经营"
                     }
                   },
-                  "Property": "审批通过率"
+                  "Property": "整体审批通过率"
                 }
               },
-              "queryRef": "月度经营.审批通过率",
-              "nativeQueryRef": "审批通过率"
+              "queryRef": "月度经营.整体审批通过率",
+              "nativeQueryRef": "整体审批通过率"
             }
           ]
         }
@@ -105,7 +105,7 @@
             }
           },
           "selector": {
-            "metadata": "月度经营.审批通过率"
+            "metadata": "月度经营.整体审批通过率"
           }
         }
       ],

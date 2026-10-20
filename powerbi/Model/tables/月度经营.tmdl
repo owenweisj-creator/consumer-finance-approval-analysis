@@ -25,12 +25,12 @@ table 月度经营
 		summarizeBy: sum
 		sourceColumn: 实际用信量
 
-	column 审批通过率
+	column 月度通过率
 		dataType: double
 		summarizeBy: none
 		sourceColumn: 审批通过率
 
-	column 用信率
+	column 月度用信率
 		dataType: double
 		summarizeBy: none
 		sourceColumn: 用信率
@@ -40,7 +40,7 @@ table 月度经营
 		summarizeBy: sum
 		sourceColumn: 审批金额
 
-	column 件均
+	column 月度件均
 		dataType: double
 		summarizeBy: none
 		sourceColumn: 件均
@@ -53,11 +53,11 @@ table 月度经营
 		formatString: #,0
 		displayFolder: 核心指标
 
-	measure '审批通过率' = DIVIDE(SUM('月度经营'[审批通过量]), SUM('月度经营'[进件量]))
+	measure '整体审批通过率' = DIVIDE(SUM('月度经营'[审批通过量]), SUM('月度经营'[进件量]))
 		formatString: 0.00%
 		displayFolder: 核心指标
 
-	measure '用信率' = DIVIDE(SUM('月度经营'[实际用信量]), SUM('月度经营'[审批通过量]))
+	measure '整体用信率' = DIVIDE(SUM('月度经营'[实际用信量]), SUM('月度经营'[审批通过量]))
 		formatString: 0.00%
 		displayFolder: 核心指标
 
@@ -65,7 +65,7 @@ table 月度经营
 		formatString: #,0.00
 		displayFolder: 核心指标
 
-	measure '件均' = DIVIDE([审批金额合计], SUM('月度经营'[实际用信量]))
+	measure '整体件均' = DIVIDE([审批金额合计], SUM('月度经营'[实际用信量]))
 		formatString: #,0.00
 		displayFolder: 核心指标
 
@@ -73,11 +73,11 @@ table 月度经营
 		formatString: #,0
 		displayFolder: 最新月
 
-	measure '最新月审批通过率' = VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) RETURN CALCULATE([审批通过率], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)
+	measure '最新月审批通过率' = VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) RETURN CALCULATE([整体审批通过率], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)
 		formatString: 0.00%
 		displayFolder: 最新月
 
-	measure '最新月用信率' = VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) RETURN CALCULATE([用信率], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)
+	measure '最新月用信率' = VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) RETURN CALCULATE([整体用信率], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)
 		formatString: 0.00%
 		displayFolder: 最新月
 
@@ -85,7 +85,7 @@ table 月度经营
 		formatString: #,0.00
 		displayFolder: 最新月
 
-	measure '最新月件均' = VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) RETURN CALCULATE([件均], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)
+	measure '最新月件均' = VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) RETURN CALCULATE([整体件均], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)
 		formatString: #,0.00
 		displayFolder: 最新月
 
