@@ -1,0 +1,97 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "note_attr",
+  "position": {
+    "x": 16,
+    "y": 516,
+    "z": 300,
+    "height": 184,
+    "width": 400,
+    "tabOrder": 12
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "结论",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#173B57",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "6pt"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "结构效应 -5.39pp、比率效应 -1.13pp，下降主要来自渠道结构变化，而非同一渠道审批标准整体收紧。",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#5A6B7B"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "4pt"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "需重点跟踪 Country-wide 与 Stone 两个高通过率渠道的占比变化。",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#5A6B7B"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "0pt"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "消费金融审批分析"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "16a30ac8-1abf-48e3-a1fd-feaa7158498f"
+  }
+}

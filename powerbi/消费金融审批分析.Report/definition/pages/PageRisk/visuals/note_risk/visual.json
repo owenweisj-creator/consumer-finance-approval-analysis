@@ -1,0 +1,111 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "note_risk",
+  "position": {
+    "x": 16,
+    "y": 516,
+    "z": 300,
+    "height": 184,
+    "width": 1248,
+    "tabOrder": 12
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "风险结论",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#173B57",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "6pt"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "1. Contact center 通过率最低（4.33%）且 DPD30 最高（4.80%），是风险最集中的入口。",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#5A6B7B"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "4pt"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "2. Country-wide、Stone、Regional / Local 通过率约 87%~88%，DPD30 集中在 1.9%~3.0%，属于“高通过、可控风险”渠道。",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#5A6B7B"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "4pt"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "3. 通过率下降主要来自高通过率渠道占比下降，暂未观察到“放松审批换规模”的迹象；但 DPD30 只覆盖获批客户，不能直接外推至全部进件。",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#5A6B7B"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "0pt"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

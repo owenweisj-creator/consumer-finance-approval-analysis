@@ -1,0 +1,60 @@
+table 渠道表现
+
+	column 渠道类型
+		dataType: string
+		summarizeBy: none
+		sourceColumn: 渠道类型
+
+	column 进件量
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: 进件量
+
+	column 审批通过率
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 审批通过率
+
+	column 审批金额
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: 审批金额
+
+	column DPD30率
+		dataType: double
+		summarizeBy: none
+		sourceColumn: DPD30率
+
+	measure '渠道进件量' = SUM('渠道表现'[进件量])
+		formatString: #,0
+		displayFolder: 渠道
+
+	measure '渠道通过率' = AVERAGE('渠道表现'[审批通过率])
+		formatString: 0.00%
+		displayFolder: 渠道
+
+	measure '渠道DPD30' = AVERAGE('渠道表现'[DPD30率])
+		formatString: 0.00%
+		displayFolder: 渠道
+
+	measure '渠道审批金额' = SUM('渠道表现'[审批金额])
+		formatString: #,0.00
+		displayFolder: 渠道
+
+	measure '整体DPD30' = DIVIDE(SUMX('渠道表现', '渠道表现'[DPD30率] * '渠道表现'[进件量]), SUM('渠道表现'[进件量]))
+		formatString: 0.00%
+		displayFolder: 渠道
+
+	measure '加权通过率' = DIVIDE(SUMX('渠道表现', '渠道表现'[审批通过率] * '渠道表现'[进件量]), SUM('渠道表现'[进件量]))
+		formatString: 0.00%
+		displayFolder: 渠道
+
+	partition '渠道表现' = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("E:/ai数据分析工作/consumer-finance-approval-analysis/powerbi/data/渠道表现.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"渠道类型", type text}, {"进件量", Int64.Type}, {"审批通过率", type number}, {"审批金额", type number}, {"DPD30率", type number}})
+			in
+			    #"Changed Type"

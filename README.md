@@ -44,6 +44,7 @@ data/             # 本地数据，gitignore
 outputs/figures/  # 分析图表
 outputs/report/   # 专项报告
 outputs/excel/    # Excel 汇总
+powerbi/          # Power BI 工程（PBIP）、汇总数据与语义模型
 docs/             # AI 协作记录
 ```
 
@@ -90,6 +91,32 @@ MYSQL_CHARSET=utf8mb4
 .\.venv\Scripts\python.exe scripts/build_report.py
 .\.venv\Scripts\python.exe scripts/build_excel.py
 ```
+
+## Power BI 报表
+
+打开 `powerbi/消费金融审批分析.pbip` 即可在 Power BI Desktop 中查看（需在“文件 → 选项 → 预览功能”中启用 Power BI 项目）。
+
+报表共四页，全部中文：
+
+| 页面 | 内容 |
+| --- | --- |
+| 经营总览 | 进件量、审批通过率、用信率、审批金额、件均 5 个 KPI；月度进件量与通过率组合图；月份筛选器 |
+| 渠道归因 | 结构效应 / 比率效应 / 总效应 3 个 KPI；各渠道总效应条形图；结构效应与比率效应对比；归因明细表 |
+| 风险验证 | 加权通过率、加权 DPD30、审批金额；各渠道 DPD30 条形图；渠道风险矩阵 |
+| 指标口径 | 指标口径表、数据来源与使用限制 |
+
+数据来自 `powerbi/data/` 下四张汇总表（月度经营 18 行、渠道归因 7 行、渠道表现 7 行、指标口径 8 行），由 MySQL 视图导出，口径与 SQL 文件一致。
+
+重新生成 Power BI 工程：
+
+```powershell
+.\.venv\Scripts\python.exe scripts/build_powerbi_data.py     # 从 MySQL 导出汇总 CSV
+.\.venv\Scripts\python.exe scripts/build_powerbi_model.py    # 生成 TMDL 语义模型
+.\.venv\Scripts\python.exe scripts/build_powerbi_project.py  # 生成 .pbip 工程与报表定义
+.\.venv\Scripts\python.exe scripts/validate_powerbi_project.py  # 校验字段引用与结构
+```
+
+模型中的 CSV 路径为生成时的本地绝对路径，如数据目录不同，修改 `powerbi/Model` 下各表 `File.Contents` 路径后重新执行上述后两条命令即可。
 
 ## 局限
 

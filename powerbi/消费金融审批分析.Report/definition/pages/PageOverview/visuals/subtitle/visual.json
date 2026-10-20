@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "subtitle",
+  "position": {
+    "x": 16,
+    "y": 50,
+    "z": 100,
+    "height": 24,
+    "width": 1100,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "数据窗口 2025-04 至 2026-09｜金额单位：万元（归一化）｜观察基准日 2026-09-30",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#5A6B7B"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "0pt"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

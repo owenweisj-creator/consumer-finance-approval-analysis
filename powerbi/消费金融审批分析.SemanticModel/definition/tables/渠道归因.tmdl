@@ -1,0 +1,79 @@
+table 渠道归因
+
+	column 渠道类型
+		dataType: string
+		summarizeBy: none
+		sourceColumn: 渠道类型
+
+	column 基期占比
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 基期占比
+
+	column 当期占比
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 当期占比
+
+	column 基期通过率
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 基期通过率
+
+	column 当期通过率
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 当期通过率
+
+	column '结构效应(pp)'
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 结构效应(pp)
+
+	column '比率效应(pp)'
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 比率效应(pp)
+
+	column '总效应(pp)'
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 总效应(pp)
+
+	measure '结构效应合计' = SUM('渠道归因'[结构效应(pp)])
+		formatString: 0.00
+		displayFolder: 归因
+
+	measure '比率效应合计' = SUM('渠道归因'[比率效应(pp)])
+		formatString: 0.00
+		displayFolder: 归因
+
+	measure '总效应合计' = SUM('渠道归因'[总效应(pp)])
+		formatString: 0.00
+		displayFolder: 归因
+
+	measure '基期结构占比' = AVERAGE('渠道归因'[基期占比])
+		formatString: 0.00%
+		displayFolder: 归因
+
+	measure '当期结构占比' = AVERAGE('渠道归因'[当期占比])
+		formatString: 0.00%
+		displayFolder: 归因
+
+	measure '基期渠道通过率' = AVERAGE('渠道归因'[基期通过率])
+		formatString: 0.00%
+		displayFolder: 归因
+
+	measure '当期渠道通过率' = AVERAGE('渠道归因'[当期通过率])
+		formatString: 0.00%
+		displayFolder: 归因
+
+	partition '渠道归因' = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("E:/ai数据分析工作/consumer-finance-approval-analysis/powerbi/data/渠道归因.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"渠道类型", type text}, {"基期占比", type number}, {"当期占比", type number}, {"基期通过率", type number}, {"当期通过率", type number}, {"结构效应(pp)", type number}, {"比率效应(pp)", type number}, {"总效应(pp)", type number}})
+			in
+			    #"Changed Type"

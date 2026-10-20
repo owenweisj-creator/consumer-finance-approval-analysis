@@ -1,0 +1,139 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "note_overview",
+  "position": {
+    "x": 828,
+    "y": 348,
+    "z": 300,
+    "height": 352,
+    "width": 436,
+    "tabOrder": 12
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "口径与要点",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#173B57",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "6pt"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "审批通过率 =（Approved + Unused offer）/ 全部进件。",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#5A6B7B"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "4pt"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "2026-09：进件 36,012 笔，通过率 22.90%，环比 -6.52 个百分点。",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#5A6B7B"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "4pt"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "同期进件量环比 +26.2%，属“量升率降”，需拆解渠道结构。",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#5A6B7B"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "4pt"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "用信率 97.88%，审批后客户用信意愿稳定。",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#5A6B7B"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "4pt"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "金额为归一化万元，仅用于结构与趋势比较。",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontFamily": "微软雅黑",
+                      "color": "#5A6B7B"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left",
+                "spaceAfter": "0pt"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
