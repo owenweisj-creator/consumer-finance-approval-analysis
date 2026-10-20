@@ -69,26 +69,6 @@ table 月度经营
 		formatString: #,0.00
 		displayFolder: 核心指标
 
-	measure '最新月进件量' = VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) RETURN CALCULATE([进件量合计], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)
-		formatString: #,0
-		displayFolder: 最新月
-
-	measure '最新月审批通过率' = VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) RETURN CALCULATE([整体审批通过率], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)
-		formatString: 0.00%
-		displayFolder: 最新月
-
-	measure '最新月用信率' = VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) RETURN CALCULATE([整体用信率], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)
-		formatString: 0.00%
-		displayFolder: 最新月
-
-	measure '最新月审批金额' = VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) RETURN CALCULATE([审批金额合计], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)
-		formatString: #,0.00
-		displayFolder: 最新月
-
-	measure '最新月件均' = VAR 最新月 = CALCULATE(MAX('月度经营'[月份]), REMOVEFILTERS('月度经营')) RETURN CALCULATE([整体件均], REMOVEFILTERS('月度经营'), '月度经营'[月份] = 最新月)
-		formatString: #,0.00
-		displayFolder: 最新月
-
 	partition '月度经营' = m
 		mode: import
 		source =

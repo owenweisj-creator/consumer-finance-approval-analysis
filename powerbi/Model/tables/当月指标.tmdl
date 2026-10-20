@@ -1,0 +1,61 @@
+table 当月指标
+
+	column 月份
+		dataType: string
+		summarizeBy: none
+		sourceColumn: 月份
+
+	column 进件量
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: 进件量
+
+	column 审批通过率
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 审批通过率
+
+	column 用信率
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 用信率
+
+	column 审批金额
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: 审批金额
+
+	column 件均
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 件均
+
+	measure '当月进件量' = SUM('当月指标'[进件量])
+		formatString: #,0
+		displayFolder: 当月
+
+	measure '当月审批通过率' = SUM('当月指标'[审批通过率])
+		formatString: 0.00%
+		displayFolder: 当月
+
+	measure '当月用信率' = SUM('当月指标'[用信率])
+		formatString: 0.00%
+		displayFolder: 当月
+
+	measure '当月审批金额' = SUM('当月指标'[审批金额])
+		formatString: #,0.00
+		displayFolder: 当月
+
+	measure '当月件均' = SUM('当月指标'[件均])
+		formatString: #,0.00
+		displayFolder: 当月
+
+	partition '当月指标' = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("E:/ai数据分析工作/consumer-finance-approval-analysis/powerbi/data/当月指标.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"月份", type text}, {"进件量", Int64.Type}, {"审批通过率", type number}, {"用信率", type number}, {"审批金额", type number}, {"件均", type number}})
+			in
+			    #"Changed Type"

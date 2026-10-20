@@ -60,26 +60,6 @@
             }
           }
         }
-      ],
-      "header": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'月份'"
-                }
-              }
-            }
-          }
-        }
       ]
     },
     "visualContainerObjects": {

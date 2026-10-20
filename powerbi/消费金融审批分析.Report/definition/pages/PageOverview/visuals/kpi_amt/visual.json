@@ -20,64 +20,18 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "月度经营"
+                      "Entity": "当月指标"
                     }
                   },
-                  "Property": "最新月审批金额"
+                  "Property": "当月审批金额"
                 }
               },
-              "queryRef": "月度经营.最新月审批金额",
-              "nativeQueryRef": "最新月审批金额"
+              "queryRef": "当月指标.当月审批金额",
+              "nativeQueryRef": "当月审批金额"
             }
           ]
         }
       }
-    },
-    "objects": {
-      "labels": [
-        {
-          "properties": {
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "30D"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#173B57'"
-                    }
-                  }
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "categoryLabels": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ]
     },
     "visualContainerObjects": {
       "title": [

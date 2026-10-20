@@ -63,7 +63,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "4 张汇总表：月度经营（18 行）、渠道归因（7 行）、渠道表现（7 行）、指标口径（8 行），由 scripts/build_powerbi_data.py 从 MySQL 视图导出。",
+                    "value": "5 张汇总表：月度经营（18 行）、当月指标（1 行）、渠道归因（7 行）、渠道表现（7 行）、指标口径（8 行），由 scripts/build_powerbi_data.py 从 MySQL 视图导出。",
                     "textStyle": {
                       "fontSize": "10pt",
                       "fontFamily": "微软雅黑",

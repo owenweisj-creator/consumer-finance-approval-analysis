@@ -39,7 +39,7 @@ def test_report_has_four_chinese_pages():
 
 
 def test_summary_data_tables_are_committed():
-    for name, rows in {"月度经营": 18, "渠道归因": 7, "渠道表现": 7, "指标口径": 8}.items():
+    for name, rows in {"月度经营": 18, "当月指标": 1, "渠道归因": 7, "渠道表现": 7, "指标口径": 8}.items():
         path = PBI / "data" / f"{name}.csv"
         assert path.exists()
         assert len(path.read_text(encoding="utf-8").strip().splitlines()) == rows + 1

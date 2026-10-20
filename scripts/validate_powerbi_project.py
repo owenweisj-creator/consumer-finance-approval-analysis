@@ -59,7 +59,13 @@ def main() -> int:
         for visual_file in sorted((page_dir / "visuals").glob("*/visual.json")):
             visual_count += 1
             payload = json.loads(visual_file.read_text(encoding="utf-8"))
+            visual_type = payload.get("visual", {}).get("visualType")
             query = payload.get("visual", {}).get("query", {}).get("queryState", {})
+            projection_count = sum(len(spec.get("projections", [])) for spec in query.values())
+            if visual_type != "textbox" and projection_count == 0:
+                problems.append(f"{visual_file.parent.name}: {visual_type} 没有任何字段绑定")
+            if visual_type == "pivotTable" and "Values" not in query:
+                problems.append(f"{visual_file.parent.name}: pivotTable 缺少 Values，会渲染为空白")
             for role, spec in query.items():
                 for projection in spec.get("projections", []):
                     field = projection["field"]

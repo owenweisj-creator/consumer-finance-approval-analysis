@@ -30,6 +30,11 @@ def main() -> None:
     ]
     monthly.to_csv(out / "月度经营.csv", index=False, encoding="utf-8")
 
+    current = monthly.sort_values("月份序号").iloc[[-1]][
+        ["月份", "进件量", "审批通过率", "用信率", "审批金额", "件均"]
+    ]
+    current.to_csv(out / "当月指标.csv", index=False, encoding="utf-8")
+
     decomp = query_df("SELECT * FROM `v_渠道归因` ORDER BY `总效应`")
     decomp["结构效应(pp)"] = decomp["结构效应"] * 100
     decomp["比率效应(pp)"] = decomp["比率效应"] * 100
@@ -78,6 +83,7 @@ def main() -> None:
     metrics.to_csv(out / "指标口径.csv", index=False, encoding="utf-8")
 
     print("月度经营", len(monthly))
+    print("当月指标", len(current))
     print("渠道归因", len(decomp))
     print("渠道表现", len(channel))
     print("指标口径", len(metrics))
