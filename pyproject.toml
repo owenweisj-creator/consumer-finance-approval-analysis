@@ -1,0 +1,10 @@
+[project]
+name = "consumer-finance-approval-analysis"
+version = "1.0.0"
+description = "消费金融审批通过率下降专项分析：MySQL + Pandas"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
