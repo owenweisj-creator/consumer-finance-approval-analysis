@@ -196,9 +196,9 @@ def page_title(page_title: str, subtitle: str) -> list[dict]:
         text_block(
             "title",
             16,
-            12,
+            10,
             900,
-            40,
+            36,
             [para([(page_title, run_style(20, bold=True, color_hex=NAVY))])],
             z=100,
             tab=0,
@@ -206,7 +206,7 @@ def page_title(page_title: str, subtitle: str) -> list[dict]:
         text_block(
             "subtitle",
             16,
-            50,
+            52,
             1100,
             24,
             [para([(subtitle, run_style(10, color_hex=MUTED))])],
